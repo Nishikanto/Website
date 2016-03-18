@@ -26,6 +26,7 @@ class PatientsController extends \BaseController {
 	{
 		$destinationPath = public_path('patient_image/');
 		$link_address = "/view/patients_managment/appointment"; 
+		$patient_id = null;
 
         $rules=[
 
@@ -62,8 +63,10 @@ class PatientsController extends \BaseController {
             $patient->no_of_visit = $data['field_visitNo'];
             $patient->image = $photo_fileName;
 
+
             if($patient->save()){
-                return Redirect::route('view.patients_managment', array('option' => 'create'))->with('success', 'Successfully Created! Successfully Created!<br/><a href="/view/patients_managment/appointment/$patient->id">Make New Appoinment</a>');
+            	$patient_id = $patient->name;
+                return Redirect::route('view.patients_managment', array('option' => 'create'))->with('success', 'Successfully Created!<br/><a href="appointment/'.$patient_id.'">click here </a><p>for make new appointment</p>');
             }
 
             else{
@@ -79,9 +82,9 @@ class PatientsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function createAppointment()
+	public function createAppoinment($id)
 	{
-		return 'abc';
+		return $id;
 	}
 
 	/**

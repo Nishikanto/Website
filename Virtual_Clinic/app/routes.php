@@ -38,7 +38,9 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('/user/registration_form/{whose}', ['as' => 'user.registration_form','uses' =>'AccountsController@reg_form', 'whose' => 'doctors_form/nurses_form']);
 
 
-	Route::get('/view/patients_managment/{option}', ['as' => 'view.patients_managment','uses' =>'PatientsController@patient_view', 'option' => 'search/create/appointment/check_in']);
+	Route::get('/view/patients_managment/{option}', ['as' => 'view.patients_managment','uses' =>'PatientsController@patient_view', 'option' => 'search/create/check_in']);
+
+	Route::get('/view/patients_managment/appointment/{id}', ['as' => 'view.patients_managment.createAppointment','uses' =>'PatientsController@createAppoinment']);
 
 
 	Route::post('/user/registration/doctors', [

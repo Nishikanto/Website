@@ -7,7 +7,7 @@
 {{ Form::open(array('route' => 'reg.patients', 'files' => true, 'method' => 'post', 'class' => 'form-registration', 'enctype' => "multipart/form-data")) }}
         
         <label>Gender <select type="text" name="field_gender">
-          <option value="Male">{{$Patient->name}}</option>
+          <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select></label>
 
@@ -22,6 +22,7 @@
         </select></label>
 
         <input type="submit" name=submit></input></label>
+    </div>
 
 {{ Form::close() }}
 </div>

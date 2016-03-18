@@ -22,7 +22,6 @@
         </select></label>
 
         <input type="submit" name=submit></input></label>
-    </div>
 
 {{ Form::close() }}
 </div>

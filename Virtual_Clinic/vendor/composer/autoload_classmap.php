@@ -25,6 +25,7 @@ return array(
     'Normalizer' => $vendorDir . '/patchwork/utf8/src/Normalizer.php',
     'Nurse' => $baseDir . '/app/models/Nurse.php',
     'NursesTableSeederTableSeeder' => $baseDir . '/app/database/seeds/NursesTableSeederTableSeeder.php',
+    'Patient' => $baseDir . '/app/models/Patient.php',
     'PatientsController' => $baseDir . '/app/controllers/PatientsController.php',
     'Permission' => $baseDir . '/app/models/Permission.php',
     'PermissionsTableSeeder' => $baseDir . '/app/database/seeds/PermissionsTableSeeder.php',

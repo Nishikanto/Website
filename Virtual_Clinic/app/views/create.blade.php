@@ -3,7 +3,7 @@
         @include('includes.alert')
 <div class="form-style-10">
 <h1>Patient's Information</h1>
-{{ Form::open(array('route' => 'reg.patients', 'method' => 'post', 'class' => 'form-registration')) }}
+{{ Form::open(array('route' => 'reg.patients', 'files' => true, 'method' => 'post', 'class' => 'form-registration', 'enctype' => "multipart/form-data")) }}
     
     <div class="inner-wrap">
         <label>Patient's Name<input type="text" name="field_name"/></label>
@@ -17,17 +17,16 @@
         </select></label>
 
         <label>religion<select type="text" name="field_religion" >
-          <option value="Muslims">Gynocologist</option>
-          <option value="Hindus">Arthopedics</option>
+          <option value="Muslim">Muslim</option>
+          <option value="Hindu">Hindu</option>
         </select></label>
         
         <label>Number of Visit<input type="text" name="field_visitNo"/></label>
         
-        <p>
-        {{ Form::label('avatar', 'Avatar') }}
-        {{ Form::file('avatar') }}
-        </p>
+        {{ Form::label('Patient Image') }}
+        {{ Form::file('field_image') }}
 
+        <br/><br/>
         <input type="submit" name=submit></input></label>
     </div>
 

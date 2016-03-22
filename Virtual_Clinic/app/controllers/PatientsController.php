@@ -170,7 +170,70 @@ class PatientsController extends \BaseController {
 	 */
 	public function doctorSelection()
 	{
-		return 'abc';
+		
+		$rules=[
+
+            'patient_id' => 'required',
+            'patient_name' => 'required',
+            'specialty' => 'required',
+            'doctor_id' => 'required',
+            'appointment_date' => 'required',
+            'appointment_time' => 'required'
+
+        ];
+
+        $data = Input::all();
+
+        $validator=Validator::make(Input::all(),$rules);
+
+        if ($validator->fails()) {
+
+        	$patient_name = DB::table('patients')
+        	->where('id', $data['patient_id'])
+        	->pluck('name');
+            
+            return View::make('appointment')
+            ->with('title', 'Appointment')
+			->with('id', $data['patient_id'])
+			->with('name', $patient_name)
+			->withErrors($validator);
+
+        } else {
+        	
+        	$doctor=DB::table('doctors')->where('id', $data['doctor_id'])->pluck('working_hourse');
+        	$appointmentCount = 0;
+        	
+
+        	$appointment = DB::table('appointments')
+        	->where('schedule', $data['appointment_date'])
+        	->get();
+
+
+        	$appointmentCount = count($appointment);
+        	$hourse  = $doctor;
+
+        	if($appointmentCount>=$hourse*60/15){
+        		return View::make('appointment')
+            	->with('title', 'Appointment')
+				->with('id', $data['patient_id'])
+				->with('name', $patient_name)
+				->withErrors($validator);
+        	} else {
+        		$appointment = new Appointment();
+
+            	$appointment->patients_id = $data['patient_id'];
+            	$appointment->doctors_id = $data['doctor_id'];
+            	$appointment->schedule = $data['appointment_date'].' '.$data['appointment_time'];
+
+	            	if($appointment->save()){
+	                	return View::make('appointmentComplete')
+	                	->with('title', 'appointment_complete');
+	            	}	
+        	}
+
+
+        }
+		//return 'abc';
 	}
 
 	/**

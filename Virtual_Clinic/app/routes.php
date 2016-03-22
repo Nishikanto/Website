@@ -43,6 +43,19 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('/view/patients_managment/appointment/{id}', ['as' => 'view.patients_managment.createAppointment','uses' =>'PatientsController@createAppoinment']);
 
 
+	Route::post('/view/patients_managment/new_appointment', ['as' => 'view.patients_managment.newAppointment','uses' =>'PatientsController@newAppointment']);
+
+
+	Route::post('/view/patients_managment/choose_doctor', ['as' => 'view.patients_managment.doctorChooser','uses' =>'PatientsController@doctorChooserForm']);
+
+	Route::post('/view/patients_managment/choose_doctor/doctor_selection', ['as' => 'view.patients_managment.doctorSelection','uses' =>'PatientsController@doctorSelection']);
+
+	
+            
+
+            
+
+
 	Route::post('/user/registration/doctors', [
 		'as' => 'reg.doctors', 
 		'uses' => 'AccountsController@doctorsAccountCreate']);

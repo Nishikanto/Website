@@ -2,6 +2,8 @@
 
 class PatientsController extends \BaseController {
 
+
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /patients
@@ -11,7 +13,7 @@ class PatientsController extends \BaseController {
 	public function patient_view($option)
 	{
 		if(Auth::user()->access_level == '1'){
-			return View::make($option)->with('title', 'Registration Form');;
+			return View::make($option)->with('title', 'Registration Form');
 		} else return 'You dont have access to this level';
 		
 	}
@@ -65,7 +67,7 @@ class PatientsController extends \BaseController {
 
 
             if($patient->save()){
-            	$patient_id = $patient->name;
+            	$patient_id = $patient->id;
                 return Redirect::route('view.patients_managment', array('option' => 'create'))->with('success', 'Successfully Created!<br/><a href="appointment/'.$patient_id.'">click here </a><p>for make new appointment</p>');
             }
 
@@ -84,7 +86,11 @@ class PatientsController extends \BaseController {
 	 */
 	public function createAppoinment($id)
 	{
-		return $id;
+		$patient_id = $id;
+		$name = DB::table('patients')->where('id', $id)->pluck('name');
+		
+		return View::make('appointment')->with('title', 'Appointment')
+		->with('id', $id)->with('name', $name);
 	}
 
 	/**
@@ -94,9 +100,44 @@ class PatientsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function newAppointment()
 	{
-		//
+		
+		
+
+        $rules=[
+
+            'name' => 'required',
+            'specialty' => 'required',
+            //'filed_image' => 'required'
+
+        ];
+
+        $data = Input::all();
+
+        $validator=Validator::make(Input::all(),$rules);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }  else {
+            //$patient_id = $data['name'];
+            //$doctor_specialty = $data['specialty'];
+
+
+        	//$patient = new Patient();
+
+        	 //return  $data['name'];
+           
+          /*return Redirect::route('view.patients_managment.doctorChooser')->with('title', 'Doctor Chooser')->with('id', $data['name'])->with('specialty', $data['specialty']);*/
+        }
+
+        
+
+		/*$data = Input::all();
+		$name = $data['name'];
+		return View::make('doctor_selection')->with('title', 'Doctor Selection')->with('name', $name);
+
+		return 'This feature under Construction';*/
 	}
 
 	/**
@@ -106,9 +147,18 @@ class PatientsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function doctorChooserForm()
 	{
-		//
+		$data = Input::all();
+		$patient_id = $data['name'];
+		$specialty = $data['specialty'];
+		$patient_name = DB::table('patients')->where('id', $patient_id)->pluck('name');
+
+		return View::make('doctorChooser')
+		->with('title', 'Appointment')
+		->with('name', $patient_name)
+		->with('id', $patient_id)
+		->with('specialty', $specialty);
 	}
 
 	/**
@@ -118,9 +168,9 @@ class PatientsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function doctorSelection()
 	{
-		//
+		return 'abc';
 	}
 
 	/**

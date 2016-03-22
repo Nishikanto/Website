@@ -6,7 +6,7 @@
                 <!-- dashboard -->
 
                  <li>
-                      <a href="{{ URL::route('nurse_dashboard') }}">
+                      <a href="{{ URL::route('dashboard') }}">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>

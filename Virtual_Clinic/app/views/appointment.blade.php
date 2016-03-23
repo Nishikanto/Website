@@ -19,6 +19,10 @@
                 <option value='{{$variable->specialty}}'>{{$variable->specialty}}</option>
               @endforeach
         </select></label>
+
+      
+        <label>Schedule
+        <input name="schedule"type="date" class="form-control" id="exampleInputDOB1"/></label>
         
         <input type="submit" name=submit></input></label>
     </div>

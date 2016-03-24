@@ -26,8 +26,11 @@
         </select></label>
 
         <label>specialty<select type="text" name="field_specialty" >
-          <option value="gynocologist">Gynocologist</option>
-          <option value="arthopedics">Arthopedics</option>
+          <option value="Cataract And Laser">Cataract And Laser</option>
+          <option value="Cornea">Cornea</option>
+          <option value="Glaucoma">Glaucoma</option>
+          <option value="Lasik">Lasik</option>
+          <option value="Phakic Lens">Phakic Lens</option>
         </select></label>
         
         <label>working hours<input type="text" name="field_workingHours"/></label>

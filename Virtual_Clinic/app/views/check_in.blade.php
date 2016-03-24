@@ -1,20 +1,40 @@
 @extends('layouts.default')
     @section('content')
         @include('includes.alert')
- 
- <div class="form-style-10">
-<h1>Check-in Patient</h1>
-<form>
-    <div class="inner-wrap">
-        <label>Patient's Name <input type="text" name="field1" /></label>
-        <label>Doctor's Name <input type="text" name="field1" /></label>
-    </div>
 
-    <div class="container">
-    <button type="button" class="btn btn-primary">Check-in For Report</button>
-    </div>
-</form>
-</div>
+			<div id="box">
+			<main id="center">
+			  <h1>Check-in</h1>
+			  <table class="pure-table pure-table-horizontal">
+			    <thead>
+			      <tr>
+			        <th>Patient's Name</th>
+			        <th>Doctor's Name</th>
+			        <th>Appointed Schedule</th>
+			        
+			      </tr>
+			    </thead>
+			    <tbody>
+			      
+			      
+
+			       <?php $var=DB::table('doctors')->get(); ?>
+
+			              @foreach($var as $variable)
+			              <tr>
+			               	<td>{{$variable->name}}</td>
+			        		<td>{{$variable->specialty}}</td>
+			        		<td>{{$variable->unavailability}}</td>
+			        		</tr>
+			        	@endforeach
+						     
+			     
+			    </tbody>
+			  </table>
+			</main>
+			</div>
+ 
+
 
 
 @stop

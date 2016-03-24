@@ -3,7 +3,7 @@
               <div data-original-title="Toggle Navigation" data-placement="right" class="fa fa-bars tooltips"></div>
           </div>
           <!--logo start-->
-          <a href="{{route('dashboard')}}" class="logo" >VIRTUAL <span>CLINIC</span></a>
+          <a href="{{route('dashboard')}}" class="logo" >OPHTHALMIC <span>CLINIC</span></a>
           <!--logo end-->
 
           <div class="top-nav ">

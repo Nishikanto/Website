@@ -3,7 +3,6 @@
 class PatientsController extends \BaseController {
 
 
-
 	/**
 	 * Display a listing of the resource.
 	 * GET /patients
@@ -201,6 +200,7 @@ class PatientsController extends \BaseController {
         } else {
         	
         	$doctor=DB::table('doctors')->where('id', $data['doctor_id'])->pluck('working_hourse');
+        	$doctor_name = DB::table('doctors')->where('id', $data['doctor_id'])->pluck('name');
         	$appointmentCount = 0;
         	
 
@@ -227,7 +227,12 @@ class PatientsController extends \BaseController {
 
 	            	if($appointment->save()){
 	                	return View::make('appointmentComplete')
-	                	->with('title', 'appointment_complete');
+	                	->with('title', 'appointment_complete')
+	                	->with('patient_name', $data['patient_name'])
+	                	->with('patient_serial', $data['patient_id'])
+	                	->with('doctor_name', $doctor_name)
+	                	->with('appointment_date', $data['appointment_date'])
+	                	->with('appointment_time', $data['appointment_time']);
 	            	}	
         	}
 

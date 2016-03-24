@@ -1,9 +1,7 @@
 @extends('layouts.nurseDefault')
     @section('content')
         @include('includes.alert')
-
-
-<div id="box">
+        <div id="box">
 <main id="center">
   <h1>Patient's Report</h1>
   <table class="pure-table pure-table-horizontal">
@@ -33,9 +31,5 @@
   </table>
 </main>
 </div>
-
-
-
-
+        
 @stop
-

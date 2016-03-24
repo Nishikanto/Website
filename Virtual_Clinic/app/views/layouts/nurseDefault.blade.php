@@ -13,8 +13,6 @@
     </section>
     {{--include rightSideBar--}}
 
-    <h1>This for nurse for inputing visit summary</h1>
-
     @include('includes.nurses_includes.footer')
 
 

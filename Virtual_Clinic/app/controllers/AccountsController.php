@@ -43,7 +43,6 @@ class AccountsController extends \BaseController {
                		$doctor->gender = Input::get('field_gender');
                		$doctor->specialty = Input::get('field_specialty');
                		$doctor->working_hourse = Input::get('field_workingHours');
-               		$doctor->unavailability= Input::get('availabilty');
                		$doctor->user_id = $user->id;
                		if($doctor->save()){
 

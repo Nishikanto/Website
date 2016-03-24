@@ -156,6 +156,134 @@
     margin-top: 10px;
     text-align: right;
 }
+
+
+
+$green: #27ae60;
+$dark-green: #16a085;
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+/*html, body {
+  margin: 0;
+  padding: 5em 1em;
+  width: 100%;
+  height: 100%;
+  }
+*/
+/*body {
+  padding: 15em 2em;
+  background-image: url("image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  }*/
+
+@import url(http://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
+
+h1 {
+  text-align: center;
+  font-size: 300%;
+  font-family: 'Covered By Your Grace', cursive;
+  font-weight: 300;
+  margin-top: 3em;
+  text-shadow: 0 3px 2px white;
+  color: #000000;
+  }
+
+#box {
+  margin: auto;
+  width: 50em;
+  @media all and (max-width: 52em) {
+    width: 100%;
+    }
+  height: 100%;
+  white-space: nowrap;
+  }
+#center {
+  vertical-align: middle;
+  display: inline-block;
+  white-space: normal;
+  }
+#box:after {
+  content: "";
+  width: 1px;
+  height: 100%;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: -10px;
+  }
+
+
+}
+
+table {
+  background-color: white;
+  padding: 1em;
+  &, * {
+    border-color: $green !important;
+    }
+  th {
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    background-color: $green;
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      height: 5px;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: $dark-green;
+      position: absolute;
+      }
+    }
+  }
+  th { padding: 2.0rem; font-size: 2.0rem; }
+   td { padding: 1.2rem; font-size: 1.2rem; }
+
+
+
+
+tr:nth-child(odd) { background-color: #E0E0E0; }
+
+tr:nth-child(even) { background-color: #CE7C68; }
+.pure-table thead tr {
+    background-color: #2A3542;
+    color: #fff;
+}
+
+table tr td, thead tr th {
+    text-align: center;
+}
+
+tr:hover:not(#firstrow) { transform: scale(1.2); font-weight: 600; box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);}
+
+#credits {
+  text-align: right;
+  color: white;
+  a {
+    color: $dark-green;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
 </style>
 
 

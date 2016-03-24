@@ -7,8 +7,6 @@
 
 
 {{ Form::open(array('route' => 'view.patients_managment.doctorChooser', 'method' => 'post', 'class' => 'form-registration')) }}
-        
-
         <label>Patient Name<select type="text" name="name">
           <option value={{$id}}>{{$name}}</option>
         </select></label>
@@ -19,10 +17,6 @@
                 <option value='{{$variable->specialty}}'>{{$variable->specialty}}</option>
               @endforeach
         </select></label>
-
-      
-        <label>Schedule
-        <input name="schedule"type="date" class="form-control" id="exampleInputDOB1"/></label>
         
         <input type="submit" name=submit></input></label>
     </div>

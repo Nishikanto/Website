@@ -1,9 +1,6 @@
 @extends('layouts.default')
     @section('content')
         @include('includes.alert')
- 
-
-
 
  <div class="form-style-10">
 <h1>Available Doctors</h1>

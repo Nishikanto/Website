@@ -21,8 +21,8 @@
 
 				<?php			      
 			      $appointments = DB::table('appointments')
-		            ->join('patients', 'appointments.id', '=', 'patients.id')
-		            ->join('doctors', 'appointments.id', '=', 'doctors.id')
+		            ->join('patients', 'appointments.patients_id', '=', 'patients.id')
+		            ->join('doctors', 'appointments.doctors_id', '=', 'doctors.id')
 		            ->select('appointments.*', 'doctors.name as doctors_name', 'patients.name as patients_name')
 		            ->get();
 
@@ -34,7 +34,7 @@
 			               	<td>{{$variable->patients_name}}</td>
 			        		<td>{{$variable->doctors_name}}</td>
 			        		<td>{{$variable->schedule}}</td>
-			               	<td><a  class="btn btn-xs btn-success btn-edit" href="#">Check-in</a>
+			               	<td><a  class="btn btn-xs btn-success btn-edit" href="check_in/{{$variable->patients_id}}/{{$variable->doctors_id}}">Check-in</a>
 			        		</tr>
 			        	@endforeach
 						     

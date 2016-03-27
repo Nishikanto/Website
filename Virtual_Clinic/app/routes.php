@@ -109,10 +109,29 @@ Route::group(array('before' => 'auth'), function()
 		'uses' => 'SearchController@editOldPatientindb'
 		]);
 
+
+	Route::get('user/patients_managment/check_in/{patient_id}/{doctor_id}',[
+		'as' => 'user.patients_managment.check_in',
+		'uses' =>'PatientsController@checkIn'
+		]);
+
+
+	//-----------------------------------------------------Visit Summary-------------------------------
+
 	Route::get('nurse/patients_managment/visit_summary', [
 		'as' => 'nurse.patients_managment.visit_summary',
 		'uses' =>'NurseController@visitSummary'
 		]);
+
+
+	Route::post('nurse/patients_managment/visit_summary/entry',[
+		'as' => 'nurse.visit_summary',
+		'uses' => 'NurseController@visitSummaryEntry'
+		]);
+
+	//--------------------------------------------------------------------------
+
+
 });
 
 

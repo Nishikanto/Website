@@ -36,18 +36,17 @@ class PatientsController extends \BaseController {
             'field_gender' => 'required',
             'field_religion' => 'required',
             'field_visitNo' => 'required',
-            //'filed_image' => 'required'
-
         ];
 
         $data = Input::all();
 
-        $validator=Validator::make(Input::all(),$rules);
+        $validator = Validator::make(Input::all(),$rules);
 
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
         } else if(!Input::hasFile('field_image')){
         	 return Redirect::back()->withErrors("Image is required");
+      
         } else {
             $photo_fileName = null;
             if (Input::hasFile('field_image')){
@@ -248,9 +247,9 @@ class PatientsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function checkIn($patient_id, $doctor_id)
 	{
-		//
+		return 'abc';
 	}
 
 }

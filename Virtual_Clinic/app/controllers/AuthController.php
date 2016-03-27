@@ -75,7 +75,8 @@ class AuthController extends \BaseController {
 
 		if(Auth::user()->access_level== '2'){
 			return View::make('doc_dashboard')
-					->with('title','Dashboard');
+					->with('title','Dashboard')
+					->with('id', Auth::user()->id);
 		} else return 'You dont have access to this level';
 
 		

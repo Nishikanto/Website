@@ -35,10 +35,4 @@
 </div>
 @endif
 
- @if (!empty($success))
-           <div class="alert alert-success alert-dismissable fade in">
-	  	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	  	{{ $success }}
-	</div>
-   
-@endif
+ 

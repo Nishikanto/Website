@@ -22,7 +22,6 @@
                          <ul class="sub">
                              <li><a href="/view/patients_managment/search">Search Old Patient</a></li>
                              <li><a href="/view/patients_managment/create">Create New Patient</a></li>
-                             <li><a href="/view/patients_managment/check_in">Check in Patient</a></li>
                          </ul>
                      </li>
                      

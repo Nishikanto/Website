@@ -1,35 +1,54 @@
 @extends('layouts.nurseDefault')
     @section('content')
         @include('includes.alert')
-        <div id="box">
-<main id="center">
-  <h1>Patient's Report</h1>
-  <table class="pure-table pure-table-horizontal">
-    <thead>
-      <tr>
-        <th>Patient's Name</th>
-        <th>Assigned Doctor</th>
-        <th>Report</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      
-      <?php $var=DB::table('patients')->get(); ?>
+       <div id="box">
+      <main id="center">
+        <h1 style="color: black; font-style: bold; text-align: left">Check-in</h1>
+        <table class="pure-table pure-table-horizontal">
+          <thead>
+            <tr>
+              <th>Patient's id</th>
+              <th>Patient's Name</th>
+              <th>Patient's Date of Birth</th>
+              <th>Assigned Doctor Name</th>
+              <th>Appointed Schedule</th>
+              <th></th>
+              
+            </tr>
+          </thead>
+          <tbody style="color: black;">
 
-              @foreach($var as $variable)
-              <tr>
-               	<td>{{$variable->name}}</td>
-               	<?php $var=DB::table('doctors')->get(); ?>
-        		<td>{{$variable->name}}</td>
-        		<td>Unavailable</td>
-        		</tr>
-        	@endforeach
-     
-     
-    </tbody>
-  </table>
-</main>
-</div>
+
+        <?php           
+            $appointments = DB::table('appointments')
+                ->join('patients', 'appointments.patients_id', '=', 'patients.id')
+                ->join('doctors', 'appointments.doctors_id', '=', 'doctors.id')
+                ->select(
+                  'appointments.schedule as schedule',
+                  'appointments.patients_id as patients_id',
+                  'doctors.name as doctors_name', 
+                  'patients.name as patients_name', 
+                  'patients.dob as patients_dob', 
+                  'patients.name as patients_name'
+                  )->get();
+              ?>
+
+                    @foreach($appointments as $variable)
+                    <tr>
+                      <td>{{$variable->patients_id}}</td>
+                      <td>{{$variable->patients_name}}</td>
+                      <td>{{$variable->patients_dob}}</td>
+                      <td>{{$variable->doctors_name}}</td>
+                      <td>{{$variable->schedule}}</td>
+                      <td><a class="btn btn-xs btn-success btn-edit" href="nurse/patients_managment/visit_summary">Visit Summary</a>
+                  </tr>
+                @endforeach
+                 
+           
+          </tbody>
+        </table>
+      </main>
+      </div>
+
         
 @stop

@@ -3,34 +3,40 @@
         @include('includes.alert')
 
         
-<div id="box">
-<main id="center">
-  <h1>Schedules</h1>
+
+  <h1 style="text-align: left;">Medication Update</h1>
   <table class="pure-table pure-table-horizontal">
     <thead>
       <tr>
-        <th>Doctor's Name</th>
-        <th>Specialty</th>
-        <th>Availability</th>
+        <th>Patient ID</th>
+        <th>Patient Name</th>
+        <th>Medication</th>
         
       </tr>
     </thead>
     <tbody>
       
-      <?php $var=DB::table('doctors')->get(); ?>
+      <?php $var=DB::table('visitsummary')->get(); ?>
 
               @foreach($var as $variable)
+              <?php 
+                  if($variable->medication == ""){
+                    break;
+                  }
+
+              ?>
+
+
               <tr>
-               	<td>{{$variable->name}}</td>
-        		<td>{{$variable->specialty}}</td>
-        		<td>{{$variable->unavailability}}</td>
+               	<td>{{$variable->patient_id}}</td>
+        		<td>{{$variable->patient_name}}</td>
+        		<td>{{$variable->medication}}</td>
         		</tr>
         	@endforeach
      
      
     </tbody>
   </table>
-</main>
-</div>
+
 
 @stop

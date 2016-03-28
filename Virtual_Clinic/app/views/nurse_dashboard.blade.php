@@ -20,12 +20,12 @@
 
 
         <?php           
-            $appointments = DB::table('appointments')
-                ->join('patients', 'appointments.patients_id', '=', 'patients.id')
-                ->join('doctors', 'appointments.doctors_id', '=', 'doctors.id')
+            $appointments = DB::table('checkin')
+                ->join('patients', 'checkin.patient_id', '=', 'patients.id')
+                ->join('doctors', 'checkin.doctor_id', '=', 'doctors.id')
                 ->select(
-                  'appointments.schedule as schedule',
-                  'appointments.patients_id as patients_id',
+                  'checkin.schedule as schedule',
+                  'checkin.patient_id as patients_id',
                   'doctors.name as doctors_name', 
                   'patients.name as patients_name', 
                   'patients.dob as patients_dob', 

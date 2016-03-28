@@ -247,9 +247,21 @@ class PatientsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function checkIn($patient_id, $doctor_id)
+	public function checkIn($patient_id, $doctor_id, $schedule)
 	{
-		return 'abc';
+		$checkin = new CheckIn();
+		$checkin->patient_id = $patient_id;
+		$checkin->doctor_id = $doctor_id;
+		$checkin->schedule = $schedule;
+
+		if($checkin->save()){
+			DB::table('appointments')
+			->where('patients_id', '=', $patient_id)
+			->where('doctors_id', '=', $doctor_id)
+			->delete();
+
+			return Redirect::back()->with('success', 'The patient is checked in for visit');
+		}
 	}
 
 }

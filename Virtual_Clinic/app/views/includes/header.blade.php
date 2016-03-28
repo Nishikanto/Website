@@ -246,7 +246,7 @@ table {
       }
     }
   }
-  th { padding: 2.0rem; font-size: 2.0rem; }
+  th { padding: 1.5rem; font-size: 1.5rem; }
    td { padding: 1.2rem; font-size: 1.2rem; }
 
 

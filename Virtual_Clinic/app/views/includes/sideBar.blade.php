@@ -12,6 +12,8 @@
                       </a>
                   </li>
 
+                 
+
 
                   <li class="sub-menu">
 
@@ -22,7 +24,7 @@
                          <ul class="sub">
                              <li><a href="/view/patients_managment/search">Search Old Patient</a></li>
                              <li><a href="/view/patients_managment/create">Create New Patient</a></li>
-                             <li><a href="/view/patients_managment/check_in">Check In</a></li>
+                             <li><a href="/view/patients_managment/check_in">Check In For Today</a></li>
                          </ul>
                      </li>
                      
@@ -38,6 +40,21 @@
                              <li><a href="/user/registration_form/nurses_form">Add New Nurse</a></li>
                          </ul>
                      </li>
+
+                    <li>
+                      <a href="{{ URL::route('doctors_list') }}">
+                          <i class="fa fa-tasks"></i>
+                          <span>Doctors List</span>
+                      </a>
+                    </li>
+
+
+                    <li>
+                      <a href="{{ URL::route('nurses_list') }}">
+                          <i class="fa fa-tasks"></i>
+                          <span>Nurses List</span>
+                      </a>
+                    </li>
 
                      <!--<li class="sub-menu">
 

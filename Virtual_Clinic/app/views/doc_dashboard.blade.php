@@ -18,11 +18,11 @@
 
         <?php           
             $appointments = 
-                DB::table('appointments')
-                ->join('patients', 'appointments.patients_id', '=', 'patients.id')
-                ->join('doctors', 'appointments.doctors_id', '=', 'doctors.id')
-                ->join('visitsummary', 'appointments.patients_id', '=', 'visitsummary.patient_id')
-                ->select('appointments.*', 'doctors.name as doctors_name', 'patients.name as patients_name', 'doctors.user_id as doctors_user_id', 'visitsummary.*')
+                DB::table('checkin')
+                ->join('patients', 'checkin.patient_id', '=', 'patients.id')
+                ->join('doctors', 'checkin.doctor_id', '=', 'doctors.id')
+                ->join('visitsummary', 'checkin.patient_id', '=', 'visitsummary.patient_id')
+                ->select('checkin.*', 'doctors.name as doctors_name', 'patients.name as patients_name', 'doctors.user_id as doctors_user_id', 'visitsummary.*')
                 ->get()
                 
               
@@ -33,7 +33,7 @@
                        <tr>
                          <td>{{$variable->patients_name}}</td>
                          <td>{{$variable->schedule}}</td>
-                         <td><a  class="btn btn-xs btn-success btn-edit" href="#">Check-in</a>
+                         <td><a  class="btn btn-xs btn-success btn-edit" href="medication/{{$variable->patient_id}}">Madication</a>
                        </tr>
                     @endif
                 @endforeach

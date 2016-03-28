@@ -17,9 +17,7 @@ class CreateCheckinTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('patient_id');
-			$table->string('patient_name');
 			$table->integer('doctor_id');
-			$table->string('doctor_name');
 			$table->string('schedule');
 		});
 	}

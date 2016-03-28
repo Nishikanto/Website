@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder {
 					[
 								'email'      => 'nusrat.ara@gmail.com',
 								'password'   => Hash::make('a'),
-								'access_level' => '2',
+								'access_level' => '1',
 								'created_at' => date('Y-m-d H:i:s'),
 								'updated_at' => date('Y-m-d H:i:s')
 					]

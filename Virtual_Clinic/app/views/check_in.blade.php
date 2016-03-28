@@ -21,10 +21,12 @@
 
 				<?php			      
 			      $appointments = DB::table('appointments')
+	
 		            ->join('patients', 'appointments.patients_id', '=', 'patients.id')
 		            ->join('doctors', 'appointments.doctors_id', '=', 'doctors.id')
+
 		            ->select('appointments.*', 'doctors.name as doctors_name', 'patients.name as patients_name')
-		            ->groupBy('appointments.schedule')
+		            ->orderBy('appointments.schedule', 'desc')
 		            ->get();
 
 
@@ -39,17 +41,18 @@
 			                $today = Carbon\Carbon::now()->toDateString();
 
 			                if($myDay == $today){
-			                	$day = 'Today';
-			                } else $day = $variable->schedule;
-						?>
-
-
-			              <tr>
+			                	$day = 'Today'; ?>
+			                	<tr>
 			               	<td>{{$variable->patients_name}}</td>
 			        		<td>{{$variable->doctors_name}}</td>
 			        		<td>{{$day.' at '.$myTime}}</td>
-			               	<td><a class="btn btn-xs btn-success btn-edit" href="check_in/{{$variable->patients_id}}/{{$variable->doctors_id}}">Check-in</a>
+			               	<td><a class="btn btn-xs btn-success btn-edit" href="check_in/{{$variable->patients_id}}/{{$variable->doctors_id}}/{{$variable->schedule}}">Check-in</a>
 			        		</tr>
+			                <?php	 } else $day = $variable->schedule;
+						?>
+
+
+			              
 			        	@endforeach
 						     
 			     

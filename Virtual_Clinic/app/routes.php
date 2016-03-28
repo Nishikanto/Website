@@ -110,13 +110,13 @@ Route::group(array('before' => 'auth'), function()
 		]);
 
 
-	Route::get('user/patients_managment/check_in/{patient_id}/{doctor_id}',[
+	Route::get('view/patients_managment/check_in/{patient_id}/{doctor_id}/{schedule}',[
 		'as' => 'user.patients_managment.check_in',
 		'uses' =>'PatientsController@checkIn'
 		]);
 
 
-	//-----------------------------------------------------Visit Summary-------------------------------
+	//---------------------VisitSummary--------------------//
 
 	Route::get('nurse/patients_managment/visit_summary', [
 		'as' => 'nurse.patients_managment.visit_summary',
@@ -129,8 +129,59 @@ Route::group(array('before' => 'auth'), function()
 		'uses' => 'NurseController@visitSummaryEntry'
 		]);
 
-	//--------------------------------------------------------------------------
+	//---------------------------------------------------//
 
+	//---------------------Doctor route------------------//
+	
+	Route::get('medication/{patient_id}', [
+		'as' => 'doctor.dashboard.medication',
+		'uses' => 'DoctorController@medication'
+		]);
+
+
+	Route::post('doctor_dashboard/medication/save', [
+		'as' => 'doctor.dashboard.medication.save',
+		'uses' => 'DoctorController@medicationSave'
+		]);
+
+	//---------------------------------------------------//
+
+
+	//----------------Editing Deleting Doctor/nurse---------------//
+
+		// Doctor --------------------------------
+		Route::get('user/edit/doctor/{id}', [
+		'as' => 'user.edit.doctor.view',
+		'uses' => 'EditController@doctorView'
+		]);
+
+		Route::post('user/edit/doctor/save', [
+		'as' => 'user.edit.doctor.save',
+		'uses' => 'EditController@doctorSave'
+		]);
+
+		Route::get('user/delete/doctor/{id}',[
+		'as' => 'user.delete.doctor',
+		'uses' => 'EditController@doctorDelete'
+		]);
+
+		// Nurse -----------------------------------
+		Route::get('user/edit/nurse/{id}', [
+		'as' => 'user.edit.nurse.view',
+		'uses' => 'EditController@nurseView'
+		]);
+
+		Route::post('user/edit/nures/save', [
+		'as' => 'user.edit.nurse.save',
+		'uses' => 'EditController@nurseSave'
+		]);
+
+		Route::get('user/delete/nurse/{id}',[
+		'as' => 'user.delete.nurse',
+		'uses' => 'EditController@nurseDelete'
+		]);
+
+	//-------------------------------------------------//
 
 });
 

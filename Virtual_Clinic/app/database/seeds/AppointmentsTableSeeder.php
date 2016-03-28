@@ -7,7 +7,7 @@ class AppointmentsTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$appointments = [
+		/*$appointments = [
 					[
 								'patients_id' =>'1',
 								'doctors_id'  =>'1',
@@ -22,7 +22,7 @@ class AppointmentsTableSeeder extends Seeder {
 
 		];
 
-		DB::table('appointments')->insert($appointments);
+		DB::table('appointments')->insert($appointments);*/
 	}
 
 }

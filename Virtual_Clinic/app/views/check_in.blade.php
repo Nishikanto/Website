@@ -24,17 +24,31 @@
 		            ->join('patients', 'appointments.patients_id', '=', 'patients.id')
 		            ->join('doctors', 'appointments.doctors_id', '=', 'doctors.id')
 		            ->select('appointments.*', 'doctors.name as doctors_name', 'patients.name as patients_name')
+		            ->groupBy('appointments.schedule')
 		            ->get();
+
 
 
 			        ?>
 
-			              @foreach($appointments as $variable)
+			            @foreach($appointments as $variable)
+			              
+			            <?php	
+			                $myDay = Carbon\Carbon::parse($variable->schedule)->toDateString();
+			                $myTime = Carbon\Carbon::parse($variable->schedule)->toTimeString();
+			                $today = Carbon\Carbon::now()->toDateString();
+
+			                if($myDay == $today){
+			                	$day = 'Today';
+			                } else $day = $variable->schedule;
+						?>
+
+
 			              <tr>
 			               	<td>{{$variable->patients_name}}</td>
 			        		<td>{{$variable->doctors_name}}</td>
-			        		<td>{{$variable->schedule}}</td>
-			               	<td><a  class="btn btn-xs btn-success btn-edit" href="check_in/{{$variable->patients_id}}/{{$variable->doctors_id}}">Check-in</a>
+			        		<td>{{$day.' at '.$myTime}}</td>
+			               	<td><a class="btn btn-xs btn-success btn-edit" href="check_in/{{$variable->patients_id}}/{{$variable->doctors_id}}">Check-in</a>
 			        		</tr>
 			        	@endforeach
 						     

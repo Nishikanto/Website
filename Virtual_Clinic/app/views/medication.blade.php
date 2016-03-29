@@ -8,7 +8,7 @@
 			<?php
 			 $visitsummary = 
                 DB::table('visitsummary')
-                ->where('patient_id', $patient_id)
+                ->where('id', $id)
                 ->first();
         	?>
 
@@ -23,9 +23,11 @@
         	<label>Patient BP : {{$visitsummary->bp}}</label>
 
         	<label>Ratinal Image : {{$visitsummary->retinal_image}}</label>
+        	<img height="280" width="320" alt="" src="{{asset('retinal_image/'.$visitsummary->retinal_image)}}">
 
         	{{ Form::open(array('route' => 'doctor.dashboard.medication.save', 'files' => true, 'method' => 'post', 'class' => 'form-registration', 'enctype' => "multipart/form-data")) }}
 				    <div class="inner-wrap">
+				    	<input type="hidden" value="{{$id}}" name="id"></input>
 				    	<input  type="hidden" value="{{$visitsummary->patient_id}}" name="patient_id"></input>
 
 				        <label>Medication <textarea type="text" name="medication"></textarea></label>

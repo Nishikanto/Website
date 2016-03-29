@@ -8,9 +8,11 @@ class DoctorController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function medication($patient_id)
+	public function medication($id, $patient_id)
 	{
-		return View::make('medication')->with('title', 'Medication Form')->with('patient_id', $patient_id);
+		return View::make('medication')->with('title', 'Medication Form')
+		->with('id', $id)
+		->with('patient_id', $patient_id);
 	}
 
 	/**
@@ -23,8 +25,9 @@ class DoctorController extends \BaseController {
 	{
 		$rules=[
 
-            'patient_id' => 'required',
-            'medication' => 'required',
+			'patient_id' => 'required',
+            'id' => 'required',
+            'medication' => 'required'
             //'filed_image' => 'required'
 
         ];
@@ -39,7 +42,7 @@ class DoctorController extends \BaseController {
             
         	try {
 			     DB::table('visitsummary')
-	            ->where('patient_id', $data['patient_id'])
+	            ->where('id', $data['id'])
 	            ->update(['medication' => $data['medication']]);
 
 

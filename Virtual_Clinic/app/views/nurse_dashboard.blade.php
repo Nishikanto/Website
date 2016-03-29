@@ -40,7 +40,7 @@
                       <td>{{$variable->patients_dob}}</td>
                       <td>{{$variable->doctors_name}}</td>
                       <td>{{$variable->schedule}}</td>
-                      <td><a class="btn btn-xs btn-success btn-edit" href="nurse/patients_managment/visit_summary">Visit Summary</a>
+                      <td><a class="btn btn-xs btn-success btn-edit" href="nurse/patients_managment/visit_summary/{{$variable->patients_id}}/{{$variable->patients_name}}">Visit Summary</a>
                   </tr>
                 @endforeach
                  

@@ -118,7 +118,7 @@ Route::group(array('before' => 'auth'), function()
 
 	//---------------------VisitSummary--------------------//
 
-	Route::get('nurse/patients_managment/visit_summary', [
+	Route::get('nurse/patients_managment/visit_summary/{patient_id}/{patient_name}', [
 		'as' => 'nurse.patients_managment.visit_summary',
 		'uses' =>'NurseController@visitSummary'
 		]);
@@ -133,7 +133,7 @@ Route::group(array('before' => 'auth'), function()
 
 	//---------------------Doctor route------------------//
 	
-	Route::get('medication/{patient_id}', [
+	Route::get('medication/{id}/{patient_id}', [
 		'as' => 'doctor.dashboard.medication',
 		'uses' => 'DoctorController@medication'
 		]);
@@ -182,6 +182,12 @@ Route::group(array('before' => 'auth'), function()
 		]);
 
 	//-------------------------------------------------//
+
+
+		Route::get('user/delete/medication/{id}', [
+			'as' => 'user.delete.medication',
+			'uses' => 'EditController@deleteMedication'
+			]);
 
 });
 

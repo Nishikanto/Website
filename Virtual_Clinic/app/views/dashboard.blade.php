@@ -11,12 +11,15 @@
         <th>Patient ID</th>
         <th>Patient Name</th>
         <th>Medication</th>
+        <th></th>
         
       </tr>
     </thead>
     <tbody>
       
-      <?php $var=DB::table('visitsummary')->get(); ?>
+      <?php $var=DB::table('visitsummary')
+      ->orderBy('patient_id', 'desc')
+      ->get(); ?>
 
               @foreach($var as $variable)
               <?php 
@@ -31,6 +34,7 @@
                	<td>{{$variable->patient_id}}</td>
         		<td>{{$variable->patient_name}}</td>
         		<td>{{$variable->medication}}</td>
+             <td><a class="btn btn-xs btn-success btn-edit" href="user/delete/medication/{{$variable->id}}">Delete this patient</a>
         		</tr>
         	@endforeach
      

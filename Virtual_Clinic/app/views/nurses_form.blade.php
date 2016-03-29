@@ -15,7 +15,7 @@
     <div class="section"><span>2</span>Details Informations</div>
     
     <div class="inner-wrap">
-        <label>Nurses's Name<input type="text" name="field_name"/></label>
+        <label>Nurse's Name<input type="text" name="field_name"/></label>
         <label>Date of Birth
         <input name="field_dob"type="date" class="form-control" id="exampleInputDOB1" placeholder="Date of Birth"/></label>
 

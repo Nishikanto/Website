@@ -54,7 +54,10 @@ function myFunction() {
           ->orderBy('schedule', 'desc')
           ->first();
            
-          echo "\"$appointments->schedule\"";
+           if(!$appointments == null){
+             echo "\"$appointments->schedule\"";
+           }
+         
 
     ?> ;
 

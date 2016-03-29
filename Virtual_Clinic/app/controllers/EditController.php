@@ -160,9 +160,14 @@ class EditController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function deleteMedication($id)
 	{
-		//
+		try {
+			DB::table('visitsummary')->where('patient_id', '=', $id)->delete();
+			return Redirect::route('dashboard')->with('success', 'Update Successfull');
+		} catch (Exception $e) {
+			return Redirect::route('dashboard')->withErrors('Something wrong, please try again');
+		}
 	}
 
 }

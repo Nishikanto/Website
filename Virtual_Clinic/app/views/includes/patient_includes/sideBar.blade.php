@@ -20,7 +20,7 @@
                   </li>
 
                   <li>
-                      <a href="{{ URL::route('patient_dashboard') }}">
+                      <a href="{{ URL::route('medication') }}">
                           <i class="fa fa-tasks"></i>
                           <span>Medication</span>
                       </a>

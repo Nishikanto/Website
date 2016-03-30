@@ -266,8 +266,19 @@ class PatientsController extends \BaseController {
 			->where('doctors_id', '=', $doctor_id)
 			->delete();
 
-			Mail::send(['text'=>'Your appointment request is accepted. You have to come for visit at '. $schedule], $data, function($message) {
-			 $message->to($patientAsUser->email, $patient->name)->subject('appointment');
+			$content = 'Your appointment request is accepted. You have to come for visit at '. $schedule;
+			$user = array(
+				'email'=>$patientAsUser->email,
+				'name'=>$patient->name,
+				'detail'=>$content
+			);
+		
+
+			// use Mail::send function to send email passing the data and using the $user variable in the closure
+			Mail::send([], [], function($message) use ($user)
+			{
+			  $message->to($user['email'], $user['name'])->subject('Appointment')
+			  ->setBody($user['detail']);
 			});
 
 			return Redirect::back()->with('success', 'The patient is checked in for visit');

@@ -82,7 +82,7 @@ class PatientRegistration extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function medication()
 	{
 		//
 	}

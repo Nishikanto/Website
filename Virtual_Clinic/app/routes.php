@@ -34,6 +34,12 @@ Route::group(array('before' => 'auth'), function()
 
 	//-----------------------Patient Route-------------------//
 
+	Route::get('patient/medication', [
+		'as' => 'medication',
+		'uses' => 'PatientAppointment@medication'
+
+		]);
+
 	Route::get('patient/patient_appointment', [
 		'as' => 'patient_appointment',
 		'uses' => 'PatientAppointment@appointmentView'

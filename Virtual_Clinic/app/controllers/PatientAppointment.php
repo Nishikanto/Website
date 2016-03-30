@@ -90,8 +90,6 @@ class PatientAppointment extends \BaseController {
 
         if ($validator->fails()) {
 
-        	
-            
             return View::make('PatientViews/appointment')
             ->with('title', 'Appointment')
 			->with('id', $data['patient_id'])
@@ -146,9 +144,13 @@ class PatientAppointment extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function medication()
 	{
-		//
+		$patient = DB::table('patients')
+						->where('report', Auth::User()->id)
+						->first();;
+
+		return View::make('PatientViews/medication')->with('title', 'medication')->with('id', $patient->id);
 	}
 
 	/**

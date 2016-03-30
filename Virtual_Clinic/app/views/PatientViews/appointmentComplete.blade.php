@@ -8,8 +8,9 @@
           <h3>Patient id   :     <a style="color: blue">{{$patient_id}}</a></h3>
           <h3>Patient Name     :    <a style="color: blue">{{$patient_name}}</a></h3>
           <h3>Assigned Doctor  :     <a style="color: blue">{{$doctor_name}}</a></h3>
-          <h3>Appointment Date :     <a style="color: blue">{{$appointment_date}}</a></h3>
           <h3>Appointment Time :     <a style="color: blue">{{$appointment_time}}</a></h3>
+
+          Your appointment is now peding. You get an email if your appointment request is get accepted. 
     </div>
     <br></br>
 

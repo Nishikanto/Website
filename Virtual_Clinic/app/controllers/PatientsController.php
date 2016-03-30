@@ -185,7 +185,7 @@ class PatientsController extends \BaseController {
         $validator=Validator::make(Input::all(),$rules);
 
 
-		$patient_name = DB::table('patients')
+		$patient = DB::table('patients')
 		->where('id', $data['patient_id'])
 		->first();
 
@@ -257,10 +257,18 @@ class PatientsController extends \BaseController {
 		$checkin->schedule = $schedule;
 
 		if($checkin->save()){
+
+			$patient = DB::table('patients')->where('id', $patient_id)->first();
+			$patientAsUser = DB::table('users')->where('id', $patient->report)->first(); 
+
 			DB::table('appointments')
 			->where('patients_id', '=', $patient_id)
 			->where('doctors_id', '=', $doctor_id)
 			->delete();
+
+			Mail::send(['text'=>'Your appointment request is accepted. You have to come for visit at '. $schedule], $data, function($message) {
+			 $message->to($patientAsUser->email, $patient->name)->subject('appointment');
+			});
 
 			return Redirect::back()->with('success', 'The patient is checked in for visit');
 		}

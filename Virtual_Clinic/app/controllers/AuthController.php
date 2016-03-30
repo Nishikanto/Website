@@ -41,9 +41,11 @@ class AuthController extends \BaseController {
 			{
 				if(Auth::user()->access_level== '1'){
 					return Redirect::intended('dashboard');
-				} elseif (Auth::user()->access_level== '2') {
+				} elseif (Auth::user()->access_level == '2') {
 					return Redirect::intended('doc_dashboard');
-				} else {
+				} elseif (Auth::user()->access_level == '4') 
+					return Redirect::intended('patient_dashboard');
+				else {
 					return Redirect::intended('nurse_dashboard');
 				}
 
@@ -78,7 +80,15 @@ class AuthController extends \BaseController {
 					->with('title','Dashboard')
 					->with('id', Auth::user()->id);
 		} else return 'You dont have access to this level';
+		
+	}
 
+	public function patient_dashboard(){
+
+		if(Auth::user()->access_level== '4'){
+			return View::make('patient_dashboard')
+					->with('title','Dashboard');
+		} else return 'You dont have access to this level';
 		
 	}
 

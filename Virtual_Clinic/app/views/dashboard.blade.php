@@ -26,9 +26,7 @@
                   if($variable->medication == ""){
                     break;
                   }
-
               ?>
-
 
               <tr>
                	<td>{{$variable->patient_id}}</td>

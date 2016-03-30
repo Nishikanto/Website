@@ -3,12 +3,12 @@
         @include('includes.alert')
         
 
-     
-
+    
   <h1 style="text-align: left";>Doctor List</h1>
 
+
    <table width="200"  class="pure-table pure-table-horizontal">
-    <thead width = "100">
+    <thead>
       <tr>
         <th>Doctor ID</th>
         <th>Doctor Name</th>
@@ -43,17 +43,10 @@
      
     </tbody>
   </table>
-</div>
+
 
 @stop
 
 
-@section('style')
-<style>
-	.test{
-		width: 200;
-	}
-
-</style>
 
 @stop

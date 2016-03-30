@@ -184,16 +184,18 @@ class PatientsController extends \BaseController {
 
         $validator=Validator::make(Input::all(),$rules);
 
+
+		$patient_name = DB::table('patients')
+		->where('id', $data['patient_id'])
+		->first();
+
         if ($validator->fails()) {
 
-        	$patient_name = DB::table('patients')
-        	->where('id', $data['patient_id'])
-        	->pluck('name');
             
             return View::make('appointment')
             ->with('title', 'Appointment')
 			->with('id', $data['patient_id'])
-			->with('name', $patient_name)
+			->with('name', $patient->name)
 			->withErrors($validator);
 
         } else {
@@ -227,7 +229,7 @@ class PatientsController extends \BaseController {
 	            	if($appointment->save()){
 	                	return View::make('appointmentComplete')
 	                	->with('title', 'appointment_complete')
-	                	->with('patient_name', $data['patient_name'])
+	                	->with('patient_name', $patient->name)
 	                	->with('patient_serial', $data['patient_id'])
 	                	->with('doctor_name', $doctor_name)
 	                	->with('appointment_date', $data['appointment_date'])

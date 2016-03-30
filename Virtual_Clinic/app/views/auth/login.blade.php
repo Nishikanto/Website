@@ -73,13 +73,20 @@
 
                     {{ Form::submit('Submit', array('class' => 'btn btn-success')) }}
                     {{ Form::close() }}
+
+
                 </div>
             </div>
         </div>
     </div>
+
+
+
     <!-- modal -->
 
 </div>
+
+    <a href="/registration" style="text-align: center; position: absolute; right: 50%" class="btn btn-primary" type="button">Register As Patient</a>
 
 <!-- js placed at the end of the document so the pages load faster -->
 {{ HTML::script('js/jquery.js') }}

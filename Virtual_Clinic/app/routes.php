@@ -19,10 +19,43 @@ Route::group(['before' => 'guest'], function(){
 	Route::controller('password', 'RemindersController');
 	Route::get('login', ['as'=>'login','uses' => 'AuthController@login']);
 	Route::post('login', array('uses' => 'AuthController@doLogin'));
+	Route::get('/registration', function(){
+		return View::make('auth/patient_registration');
+	});
+
+	Route::post('/registration', [
+		'as' => 'registration',
+		'uses' => 'PatientRegistration@registration'
+		]);
 });
 
 Route::group(array('before' => 'auth'), function()
 {
+
+	//-----------------------Patient Route-------------------//
+
+	Route::get('patient/patient_appointment', [
+		'as' => 'patient_appointment',
+		'uses' => 'PatientAppointment@appointmentView'
+		]);	
+
+	Route::post('patient/patient_appointment', [
+		'as' => 'patient_appointment',
+		'uses' => 'PatientAppointment@appointment'
+		]);
+
+	Route::post('patinet/patient_appointment/doctor_chooser', [
+		'as' => 'patient_appointment.doctor_chooser',
+		'uses' => 'PatientAppointment@doctorChooser'
+		]);
+
+	Route::post('patient/patient_appointment/make_appointment', [
+		'as' => 'patient_appointment.make_appointment',
+		'uses' => 'PatientAppointment@makeAppointment'
+		]);
+
+	//-------------------------------------------------------//
+
 
 	Route::get('logout', [
 		'as' => 'logout', 
@@ -32,6 +65,10 @@ Route::group(array('before' => 'auth'), function()
 		'as' => 'dashboard', 
 		'uses' => 'AuthController@dashboard'));
 
+	Route::get('patient_dashboard', array(
+		'as' => 'patient_dashboard', 
+		'uses' => 'AuthController@patient_dashboard'));
+
 	Route::get('doc_dashboard', array(
 		'as' => 'doc_dashboard', 
 		'uses' => 'AuthController@doc_dashboard'));
@@ -39,7 +76,6 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('nurse_dashboard', array(
 		'as' => 'nurse_dashboard', 
 		'uses' => 'AuthController@nurse_dashboard'));
-
 
 	Route::get('change-password', array(
 		'as' => 'password.change', 
@@ -52,7 +88,6 @@ Route::group(array('before' => 'auth'), function()
 		'as' => 'user.registration_form',
 		'uses' =>'AccountsController@reg_form', 
 		'whose' => 'doctors_form/nurses_form']);
-
 
 	Route::get('/view/patients_managment/{option}', [
 		'as' => 'view.patients_managment','uses' =>

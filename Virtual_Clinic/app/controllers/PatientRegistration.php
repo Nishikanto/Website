@@ -82,9 +82,12 @@ class PatientRegistration extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function medication()
+	public function graphView()
 	{
-		//
+		$patient_id = DB::table('patients')
+					->where('report', Auth::User()->id)
+					->first();
+		return View::make('PatientViews/PatientGraph')->with('id', $patient_id->id);
 	}
 
 	/**

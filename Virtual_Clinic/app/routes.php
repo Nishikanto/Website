@@ -60,6 +60,12 @@ Route::group(array('before' => 'auth'), function()
 		'uses' => 'PatientAppointment@makeAppointment'
 		]);
 
+	Route::get('patient_graph', [
+		'as' => 'patient_graph',
+		'uses' => 'PatientRegistration@graphView'
+
+		]);
+
 	//-------------------------------------------------------//
 
 

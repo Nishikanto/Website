@@ -4,6 +4,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="keyword" content="">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="img/favicon.png">
 
         <title>{{ $title }} - {{Config::get('customConfig.names.siteName')}}</title>
